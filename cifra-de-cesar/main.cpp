@@ -5,7 +5,7 @@
 int main(){
     
     CaesarCipher obj;
-    std::vector<std::string> vetor = obj.cifrarFrase("oi sou caio", 3);
+    std::vector<std::string> vetor = obj.decifrarFrase("rl vrx fdlr", 3);
     for(int i = 0; i < vetor.size(); i++){
         std::cout << vetor[i] << std::endl;
     }

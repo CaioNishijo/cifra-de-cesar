@@ -33,21 +33,29 @@ std::vector<std::string> CaesarCipher::cifrarFrase(std::string frase, int chave)
     return fraseCripto;
 } 
 
-std::string CaesarCipher::decifrarFrase(std::string frase, int chave) const{
+std::vector<std::string> CaesarCipher::decifrarFrase(std::string frase, int chave) const{
     std::string cifradoUm = alfabeto.substr(chave, 26 - chave);
     std::string cifradoDois = alfabeto.substr(0, chave);
     std::string cifrado = cifradoUm.append(cifradoDois);
 
-    char cifra[frase.length()];
+    StringMethods str;
+	
+    std::vector<std::string> fraseDescripto;
+    std::vector<std::string> palavras = str.split(frase);
 
-    for(int i = 0; i < frase.length(); i++){
-        int pos = cifrado.find(frase[i]);
+    for(int j = 0; j < palavras.size(); j++){
+
+    char cifra[palavras[j].length()];
+
+    for(int i = 0; i < palavras[j].length(); i++){
+        int pos = cifrado.find(palavras[j][i]);
         cifra[i] = alfabeto[pos];
     }
-
+    cifra[palavras[j].length()] = '\0';
     std::string mensagem(cifra);
-
-    return mensagem;
+    fraseDescripto.push_back(mensagem);
+    }
+    return fraseDescripto;
 }
 
 void CaesarCipher::decifrarPorForcaBruta(std::string frase) const{

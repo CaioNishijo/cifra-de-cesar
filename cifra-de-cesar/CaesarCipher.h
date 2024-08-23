@@ -8,7 +8,7 @@ class CaesarCipher{
     public:
         CaesarCipher();
         std::vector<std::string> cifrarFrase(std::string frase, int chave) const;
-        std::string decifrarFrase(std::string frase, int chave) const;
+        std::vector<std::string> decifrarFrase(std::string frase, int chave) const;
         void decifrarPorForcaBruta(std::string frase) const;
     private:
         std::string alfabeto;
